@@ -14,17 +14,23 @@
 
 <body>
     <div class="container text-center">
-        <h1>Hello World</h1>
+        <h1>Minesweeper</h1>
+    </div>
+    <div class="container text-center">
         <div id="game">
-            <div class="row" v-for="row in rows">
-                <div class="col" v-for="column in columns">
-                    x
-                </div>
-            </div>
-
+            <table border="1px" align="center">
+                <tr v-for="row in rows">
+                    <td v-for="column in columns" height="30px" width="30px">
+                        <field-square v-bind:square="points[[column,row]]" v-on:flag="flag" v-on:explore="explore"></field-square>
+                        <!-- <div class="bg-secondary field-square">{{points[[column,row]]}}</div> -->
+                    </td>
+                </tr>
+            </table>
             {{message}}
         </div>
     </div>
+
+
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

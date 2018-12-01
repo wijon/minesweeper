@@ -1,0 +1,13 @@
+.game-container{
+    width: 300px;
+    max-width: 300px;
+}
+
+.padding-0{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.field-square{
+    height: 100%;
+}
