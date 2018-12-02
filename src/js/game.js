@@ -50,7 +50,7 @@ Vue.filter('two_digits', function (value) {
 });
 
 function createGame() {
-    return Game.create(14, 18, 10);
+    return Game.create(14, 18, 40);
 }
 
 var app = new Vue({

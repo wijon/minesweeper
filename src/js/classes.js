@@ -205,7 +205,11 @@ class Game {
 
     flagField(field) {
         if (!this.isGameOver && !field.isExplored) {
-            field.hasFlag = !field.hasFlag;
+            if (this.getRemainingMineCount() > 0) {
+                field.hasFlag = !field.hasFlag;
+            } else if (field.hasFlag) {
+                field.hasFlag = false;
+            }
         }
     }
 
