@@ -62,7 +62,8 @@ class Board {
         // Set the has mineFlag
         mineFields.forEach(function (field) { field.hasMine = true });
 
-        this.fields.forEach(calcNearBy)
+        // Use arrow function to preserve 'this' in called method 
+        this.fields.forEach((field) => this.calcNearBy(field));
     }
 
     calcNearBy(field) {
@@ -71,7 +72,7 @@ class Board {
             return;
         }
 
-        field.nearByMineCounter = getNeighbours(field);
+        field.nearByMineCounter = this.getNeighbours(field);
     }
 
     getNeighbours(field) {
