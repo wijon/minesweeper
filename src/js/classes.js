@@ -135,12 +135,12 @@ class Board {
             return;
         }
 
-        currentField.isExplored = true;
-
         if (currentField.hasMine) {
             // If field has mine, do nothing
             return;
         }
+
+        currentField.isExplored = true;
 
         if (currentField.nearByMineCounter > 0) {
             // If the field has mines nearby, return
