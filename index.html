@@ -20,24 +20,51 @@
     <div class="container text-center">
         <div id="game">
             <div class="row">
-                <div class="col border">
+                <div class="col-3 border" v-if="game">
                     Mines: {{remainingMineCount}}
                 </div>
-                <div class="col border">
-                    <button type="button" class="btn btn-success" v-on:click="newGame">New Game</button>
+                <div class="col-6 border">
+                    <div class="row">
+                        <div class="col text-left">
+                            <a href="#settings" data-toggle="collapse">{{selectedSizeSetting.text}} </a>
+
+                            <!-- Generate radios for all sizes -->
+                            <div id="settings" class="collapse">
+                                <div class="form-check" v-for='setting in sizeSettings'>
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="size-setting" v-model="sizeSetting"
+                                            v-bind:value="setting.value">{{setting.text}}
+                                    </label>
+                                </div>
+
+                                <!-- Define radio for custom size -->
+                                <!-- <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="size-setting" v-model="sizeSetting"
+                                            value="custom">
+                                        <input type="text" title="width" v-model="customSizeSetting.width" placeholder="width" style="width: 50px">
+                                        <input type="text" title="height" v-model="customSizeSetting.height" placeholder="height" style="width: 50px">
+                                        <input type="text" title="mine count" v-model="customSizeSetting.mineCount" placeholder="mines" style="width: 50px">
+                                    </label>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-success" v-on:click="newGame">New Game</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="col border">
-                    <timer v-bind:passed-seconds="game.passedSeconds"></timer>
+                <div class="col-3 border">
+                    <timer v-if="game" v-bind:passed-seconds="game.passedSeconds"></timer>
                 </div>
             </div>
             <div class="row">
-                <div class="col border">
+                <div class="col border" v-if="game">
                     <table border="1px" align="center">
                         <tr v-for="row in game.board.height">
                             <td v-for="column in game.board.width" height="30px" width="30px">
                                 <field-element v-bind:field="game.board.getFieldByPosition({x: column, y: row})"
                                     v-on:flag="flag" v-on:explore="explore"></field-element>
-                                <!-- <div class="bg-secondary field-square">{{points[[column,row]]}}</div> -->
                             </td>
                         </tr>
                     </table>

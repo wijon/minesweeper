@@ -18,7 +18,7 @@ class Board {
         this.fields = []
     }
 
-    static create(height, width, mineCount) {
+    static create(width, height, mineCount) {
         if (height < 1 || width < 1) {
             throw "The board must be at least 1x1";
         }
@@ -180,9 +180,9 @@ class Game {
         }, 1000);
     }
 
-    static create(boardHeight, boardWidth, mineCount) {
+    static create(boardWidth, boardHeight, mineCount) {
         let game = new Game();
-        game.board = Board.create(boardHeight, boardWidth, mineCount);
+        game.board = Board.create(boardWidth, boardHeight, mineCount);
         game.mineCount = mineCount;
 
         return game;
