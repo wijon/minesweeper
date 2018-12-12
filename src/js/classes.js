@@ -182,7 +182,7 @@ class Game {
 
     static create(boardWidth, boardHeight, mineCount) {
         let game = new Game();
-        game.board = Board.create(boardWidth, boardHeight, mineCount);
+        game.board = Board.create(parseInt(boardWidth), parseInt(boardHeight), parseInt(mineCount));
         game.mineCount = mineCount;
 
         return game;
@@ -229,5 +229,13 @@ class Game {
             console.log("winner");
             clearInterval(this.timerInterval);
         }
+    }
+
+    getRows() {
+        return Array.from(Array(this.board.height), (e, i) => i + 1);
+    }
+
+    getColumns() {
+        return Array.from(Array(this.board.width), (e, i) => i + 1);
     }
 }

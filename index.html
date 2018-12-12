@@ -38,7 +38,7 @@
                                 </div>
 
                                 <!-- Define radio for custom size -->
-                                <!-- <div class="form-check">
+                                <div class="form-check">
                                     <label class="form-check-label">
                                         <input type="radio" class="form-check-input" name="size-setting" v-model="sizeSetting"
                                             value="custom">
@@ -46,7 +46,7 @@
                                         <input type="text" title="height" v-model="customSizeSetting.height" placeholder="height" style="width: 50px">
                                         <input type="text" title="mine count" v-model="customSizeSetting.mineCount" placeholder="mines" style="width: 50px">
                                     </label>
-                                </div> -->
+                                </div>
                             </div>
                         </div>
                         <div class="col">
@@ -61,8 +61,8 @@
             <div class="row">
                 <div class="col border" v-if="game">
                     <table border="1px" align="center">
-                        <tr v-for="row in game.board.height">
-                            <td v-for="column in game.board.width" height="30px" width="30px">
+                        <tr v-for="row in rows">
+                            <td v-for="column in columns" height="30px" width="30px">
                                 <field-element v-bind:field="game.board.getFieldByPosition({x: column, y: row})"
                                     v-on:flag="flag" v-on:explore="explore"></field-element>
                             </td>

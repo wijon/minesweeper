@@ -61,13 +61,15 @@ var app = new Vue({
     el: '#game',
     data: {
         game: undefined,
+        rows: [],
+        columns: [],
         sizeSettings: [
             { text: 'Small', value: 'small', width: 8, height: 10, mineCount: 10 },
             { text: 'Medium', value: 'medium', width: 18, height: 14, mineCount: 40 },
             { text: 'Large', value: 'large', width: 24, height: 20, mineCount: 99 }
         ],
         sizeSetting: 'medium',
-        customSizeSetting: {width: undefined, height: undefined, mineCount: undefined}
+        customSizeSetting: { text: 'Custom', width: undefined, height: undefined, mineCount: undefined }
     },
     methods: {
         flag(field) {
@@ -78,6 +80,9 @@ var app = new Vue({
         },
         newGame(event) {
             this.game = createGame(this.selectedSizeSetting);
+            this.rows = this.game.getRows();
+            this.columns = this.game.getColumns();
+
             if (event) {
                 // Remove focus from button
                 event.target.blur();
@@ -91,7 +96,7 @@ var app = new Vue({
         selectedSizeSetting: function () {
             if (this.sizeSetting === 'custom') {
                 // Handle custom size settings
-                return { text: 'Custom', width: this.customSizeSetting.width, height: this.customSizeSetting.height, mineCount: this.customSizeSetting.mineCount };
+                return this.customSizeSetting;
             } else {
                 return this.sizeSettings.find(s => s.value === this.sizeSetting);
             }
@@ -99,6 +104,6 @@ var app = new Vue({
     },
     mounted: function () {
         // Initial game creation
-        this.game = createGame(this.selectedSizeSetting);
+        this.newGame();
     }
 });
