@@ -107,6 +107,11 @@ class Board {
             return false;
         }
 
+        if (field.hasFlag) {
+            // If the field is flagged, do nothing
+            return true;
+        }
+
         if (field.hasMine) {
             // Field has mine, Game Over
             field.isExplored = true;
