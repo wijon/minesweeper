@@ -1,7 +1,7 @@
 # Minesweeper
 
-First try on a minesweeper implementation using Vue.js.
+First try on a Minesweeper implementation using Vue.js.
 
 ## Misc
 
-Not playable with Firefox (at least in version 80.*)
+Not playable with Firefox (at least in version 80.*).
