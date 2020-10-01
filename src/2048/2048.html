@@ -12,16 +12,22 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container text-center">
         <div id="game">
             <h1>2048</h1>
+
             <table border="1px" align="center">
                 <tr v-for="row in cells">
-                    <td class="text-center" v-for="cell in row" height="30px" width="30px">
+                    <td class="text-center" v-for="cell in row" v-bind:style="cell.getStyle()" height="60px" width="60px">
                         <cell-item v-bind:cell="cell" v-bind:key="cell.id"></cell-item>
                     </td>
                 </tr>
             </table>
+
+            <button v-on:click="startGame">Restart</button>
+
+            <h1 v-if="end && victory">You won!</h1>
+            <h1 v-if="end && !victory">You lost!</h1>
         </div>
     </div>
 
