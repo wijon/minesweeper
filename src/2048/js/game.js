@@ -203,11 +203,8 @@ var vm = new Vue({
                 // Winner
                 this.end = this.victory = true
             }
-            else if (!addRndValue(this.cells)) {
-                // Looser
-                this.end = true;
-                this.victory = false;
-            }
+
+            addRndValue(this.cells);
         }
     }
 });
