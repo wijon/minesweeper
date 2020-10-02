@@ -152,7 +152,6 @@ var vm = new Vue({
     data: {
         message: "Test",
         cells: [],
-        end: false,
         victory: false
     },
     created() {
@@ -201,7 +200,7 @@ var vm = new Vue({
 
             if (checkWinCondition(this.cells)) {
                 // Winner
-                this.end = this.victory = true
+                this.victory = true
             }
 
             addRndValue(this.cells);

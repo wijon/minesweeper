@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css\stylesheet.css">
     <title>2048</title>
 </head>
 
@@ -18,7 +19,8 @@
 
             <table border="1px" align="center">
                 <tr v-for="row in cells">
-                    <td class="text-center" v-for="cell in row" v-bind:style="cell.getStyle()" height="60px" width="60px">
+                    <td class="text-center" v-for="cell in row" v-bind:style="cell.getStyle()" height="60px"
+                        width="60px">
                         <cell-item v-bind:cell="cell" v-bind:key="cell.id"></cell-item>
                     </td>
                 </tr>
@@ -26,8 +28,9 @@
 
             <button v-on:click="startGame">Restart</button>
 
-            <h1 v-if="end && victory">You won!</h1>
-            <h1 v-if="end && !victory">You lost!</h1>
+            <transition name="bounce">
+                <h1 v-if="victory">You won!</h1>
+            </transition>
         </div>
     </div>
 
